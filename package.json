@@ -1,0 +1,35 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description": "Primera app en express",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eduardo-Ortiz-Quiroz/ExpressApp.git"
+  },
+  "author": "Eduardo O Quiroz paincore.px@gmail",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eduardo-Ortiz-Quiroz/ExpressApp/issues"
+  },
+  "homepage": "https://github.com/Eduardo-Ortiz-Quiroz/ExpressApp#readme",
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "faker": "^5.5.3",
+    "joi": "^17.7.0"
+  }
+}
