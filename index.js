@@ -4,7 +4,7 @@ const routerApi = require('./routes/index.router')
 const app = express();
 const port = 3003
 const { errorHandler, logError, boomErrorHandler} = require('./middlewares/error.handler')
-const whiteList = ['http://127.0.0.1:5500'];
+const whiteList = ['http://127.0.0.1:5500', 'https://edu-expressapp.up.railway.app/'];
 const options = {
   origin: (origin, callback) => {
     if(whiteList.includes(origin) || !origin){
