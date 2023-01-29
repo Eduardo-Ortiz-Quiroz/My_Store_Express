@@ -1,5 +1,8 @@
+const { Op } = require('sequelize');
 const faker = require('faker');
 const boom = require('@hapi/boom');
+//const pool = require('../libs/postgres.pool');
+const { models } = require('../libs/sequelize');
 class ProductsService{
   constructor(){
     this.products = [];
@@ -18,27 +21,38 @@ class ProductsService{
     }
   }
   async create(data){
-    const newProduct ={
-      id: faker.datatype.uuid(),
-      ...data
-    }
-    this.products.push(newProduct);
-    return newProduct;
+    const product = await models.Product.create(data);
+    return product;
   }
-  async find(){
-
-    return new Promise((resolve, reject)=>{
-      setTimeout(()=>{resolve(this.products)}, 2000);
-    })
+  async find(query) {
+    console.log(query)
+    const options = {
+      include: ['category'],
+      where: {}
+    };
+    const { limit, offset } = query;
+    if (limit && offset) {
+      options.limit = limit;
+      options.offset = offset;
+    }
+    const { price } = query;
+    if(price){
+      options.where.price = price;
+    }
+    const { priceMin, priceMax } = query;
+    if(priceMin && priceMax){
+      options.where.price = {
+        [Op.gte]: priceMin,
+        [Op.lte]: priceMax,
+      }
+    }
+    const products = await models.Product.findAll(options);
+    return products;
   }
   async findOne(id){
-    const product = this.products.find(item => item.id === id);
-    if(!product){
-      throw boom.notFound('Product not found');
-    }
-    if(product.isBlock) {
-      throw boom.conflict('Product is block');
-    }
+    const product = await models.Product.findByPk(id, {
+      include: ['category']
+    });
     return product;
   }
   async update(id, changes){

@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=my_store
+      - POSTGRES_USER=eduoq
+      - POSTGRES_PASSWORD=Edujs0606_
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=paincore.px@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=Edujs0606_
+    ports:
+      - 5050:80
+
+  #mysql:
+  #  image: mysql:5
+  #  environment:
+  #    - MYSQL_DATABASE=my_store
+  #    - MYSQL_USER=eduoq
+  #    - MYSQL_PASSWORD=Edujs0606_
+  #    - MYSQL_ROOT_PASSWORD=Edujs0606_
+  #    - MYSQL_PORT=3306
+  #  ports:
+  #    - 3306:3306
+  #  volumes:
+  #    - ./mysql_data:/var/lib/mysql
+#
+  #phpmyadmin:
+  #  image: phpmyadmin/phpmyadmin
+  #  environment:
+  #    - PMA_HOTS=mysqlserver
+  #  ports:
+  #    - 8081:80
+  #  links:
+  #    - mysql
+
