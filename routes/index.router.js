@@ -5,6 +5,7 @@ const usersRouter = require('./users.router');
 const customersRouter = require('./customers.router');
 const ordersRouter = require('./orders.router');
 const authRouter = require('./auth.router');
+const profileRouter = require('./profile.router');
 
 function routerApi(app){
   const router = express.Router();
@@ -15,6 +16,7 @@ function routerApi(app){
   router.use('/customers', customersRouter);
   router.use('/orders', ordersRouter);
   router.use('/auth', authRouter);
+  router.use('/profile', profileRouter);
 
   //*esto es para usar una segunda version de API con diferente direccion
   //const router2 = express.Router();

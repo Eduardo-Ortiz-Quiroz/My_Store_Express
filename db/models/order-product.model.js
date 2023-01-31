@@ -3,7 +3,7 @@ const {ORDER_TABLE} = require('./order.model')
 const {PRODUCT_TABLE} = require('./product.model')
 const ORDER_PRODUCT_TABLE  = 'orders_products';
 
-const orderProductSchema = {
+const OrderProductSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -58,4 +58,4 @@ class OrderProduct extends Model{
   }
 }
 
-module.exports = { OrderProduct, orderProductSchema, ORDER_PRODUCT_TABLE}
+module.exports = { OrderProduct, OrderProductSchema, ORDER_PRODUCT_TABLE}

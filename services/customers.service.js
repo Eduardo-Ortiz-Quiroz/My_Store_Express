@@ -10,6 +10,8 @@ class CustomerService {
     const rta = await models.Customer.findAll({
       include: ['user']
     });
+    const user = rta.user
+    console.log(user)
     return rta;
   }
 
@@ -18,6 +20,7 @@ class CustomerService {
     if (!user) {
       throw boom.notFound('customer not found');
     }
+    delete user.user.dataValues.password;
     return user;
   }
 

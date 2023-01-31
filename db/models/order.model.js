@@ -3,17 +3,17 @@ const {CUSTOMER_TABLE} = require('../models/customer.model')
 const ORDER_TABLE = 'orders';
 
 const OrderSchema = {
-  id:{
+  id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
-  customerId:{
+  customerId: {
     field: 'customer_id',
     allowNull: false,
     type: DataTypes.INTEGER,
-    references :{
+    references: {
       model: CUSTOMER_TABLE,
       key: 'id',
     },
@@ -26,18 +26,20 @@ const OrderSchema = {
     type: DataTypes.DATE,
     defaultValue: Sequelize.NOW,
   },
-  total:{
+  total: {
     type: DataTypes.VIRTUAL,
-    get(){
-      if(this.items/*as del belongsTo*/.length > 0){
-        return this.items.reduce((total, item) =>{
-          return total + (item.price * item.OrderProduct.amount);
-        }, 0)
+    get() {
+      if (this.items) {
+        if (this.items /*as del belongsTo*/.length > 0) {
+          return this.items.reduce((total, item) => {
+            return total + item.price * item.OrderProduct.amount;
+          }, 0);
+        }
+        return 0;
       }
-      return 0;
-    }
-  }
-}
+    },
+  },
+};
 
 class Order extends Model{
   static associate(models){
