@@ -1,7 +1,7 @@
 /** @type {import('sequelize-cli').Migration} */
 
 
-const { CATEGORY_TABLE, CaregorySchema, CategorySchema} = require('../models/category.model');
+const { CATEGORY_TABLE, CategorySchema} = require('../models/category.model');
 const { CUSTOMER_TABLE, CustomerSchema } = require('../models/customer.model');
 const { ORDER_PRODUCT_TABLE, OrderProductSchema } = require('../models/order-product.model');
 const { ORDER_TABLE, OrderSchema } = require('../models/order.model');

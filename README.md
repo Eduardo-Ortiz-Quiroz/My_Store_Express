@@ -1,2 +1,2 @@
 # ExpressApp
-Primera app en express
+Proyecto de Store en Express.js

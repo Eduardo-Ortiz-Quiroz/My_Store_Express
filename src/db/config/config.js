@@ -1,4 +1,4 @@
-const { config } = require('../../config/config.js');
+const { config } = require('../../config/config');
 
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
@@ -14,7 +14,7 @@ module.exports = {
   production: {
     URI: config.dbUrl,
     username: `${USER}`,
-    password: `${PASSWORD}`,
+    pgpassword: `${PASSWORD}`,
     database: config.dbName,
     dialect: 'postgres',
     dialectOptions:{
